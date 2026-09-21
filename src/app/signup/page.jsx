@@ -2,6 +2,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+
 import {
   Button,
   Description,
@@ -11,7 +12,8 @@ import {
   Input,
   Label,
   Surface,
-  
+  ListBox,
+  Select,
   TextField,
 } from "@heroui/react";
 import { redirect } from "next/navigation";
@@ -22,10 +24,10 @@ const SignUpPage = () => {
 
          const formData = new FormData(e.currentTarget);
          const user = Object.fromEntries(formData.entries());
-
+            console.log(user);
            await authClient.signUp.email({
                ...user,
-               
+               plan: "free",
            })
 
            redirect('/')
@@ -61,7 +63,7 @@ const SignUpPage = () => {
                 <FieldError />
               </TextField>
 
-              {/* <Select isRequired name="role" placeholder="Select one">
+              <Select isRequired name="role" placeholder="Select one">
                 <Label>Signup As</Label>
                 <Select.Trigger>
                   <Select.Value />
@@ -79,7 +81,7 @@ const SignUpPage = () => {
                     </ListBox.Item>
                   </ListBox>
                 </Select.Popover>
-              </Select> */}
+              </Select>
             </Fieldset.Group>
 
             <Button type="submit" className={"w-full"}>
