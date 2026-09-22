@@ -11,6 +11,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdDashboard } from "react-icons/md";
 
 const Navbar = () => {
+   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { data: session } = authClient.useSession();
@@ -20,13 +21,11 @@ const Navbar = () => {
   const handleSignOut = async () => {
     await authClient.signOut();
   };
-
-
   const pathname = usePathname();
-
-    if(pathname ==="/dashboard"){
-         return null;
-    }
+  
+       if (pathname.startsWith("/dashboard")) {
+       return null;
+  }
   return (
     <div>
       <div className="bg-black p-1 text-white">
