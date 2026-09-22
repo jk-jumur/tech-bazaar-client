@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { Avatar, Button, Dropdown, Label } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
@@ -19,6 +20,13 @@ const Navbar = () => {
   const handleSignOut = async () => {
     await authClient.signOut();
   };
+
+
+  const pathname = usePathname();
+
+    if(pathname ==="/dashboard"){
+         return null;
+    }
   return (
     <div>
       <div className="bg-black p-1 text-white">
