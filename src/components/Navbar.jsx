@@ -23,7 +23,7 @@ const Navbar = () => {
   };
   const pathname = usePathname();
   
-       if (pathname.startsWith("/dashboard")) {
+       if (pathname.includes("dashboard")) {
        return null;
   }
   return (
@@ -139,8 +139,10 @@ const Navbar = () => {
                   >
                     <Dropdown.Item id="new-file" textValue="New file">
                     
-                        <MdDashboard />
+                       <Link className="flex items-center gap-2" href={`/dashboard/${user?.role}`}>
+                          <MdDashboard />
                         <Label>Dashboard</Label>
+                       </Link>
                   
                   
                     </Dropdown.Item>
